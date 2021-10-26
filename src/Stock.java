@@ -79,9 +79,9 @@ public class Stock {
         String sellString = "Ask: none";
         String buyString = "Bid: none";
         if (sell != null)
-            sellString = String.format("Ask: %s size: %d", money.format(sell.getPrice()), sell.getShares());
+            sellString = String.format("Ask: %s size: %d", sell.isMarket() ? "market" : money.format(sell.getPrice()), sell.getShares());
         if (buy != null)
-            buyString = String.format("Bid: %s size: %d", money.format(buy.getPrice()), buy.getShares());
+            buyString = String.format("Bid: %s size: %d", buy.isMarket() ? "market" : money.format(buy.getPrice()), buy.getShares());
         String market = String.format("%s  %s", sellString, buyString);
         return String.format("%s\n%s", statistics, market);
     }
