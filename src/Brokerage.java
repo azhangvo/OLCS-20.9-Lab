@@ -33,8 +33,10 @@ public class Brokerage implements Login {
         Trader trader = registeredTraders.get(name);
         if (activeTraders.contains(trader))
             return -3;
-        if (!trader.hasMessages())
+        activeTraders.add(trader);
+        if (!trader.hasMessages()) {
             trader.receiveMessage("Welcome to SafeTrade!");
+        }
         trader.openWindow();
         return 0;
     }
